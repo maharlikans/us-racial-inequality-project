@@ -8,16 +8,24 @@
   <style>
   </style>
     <script type="text/javascript">
+
       function draw(data) {
       
       /*
         D3.js setup code
       */
+        
+          var w = window, 
+              d = document, 
+              e = d.documentElement, 
+              g = d.getElementsByTagName('body')[0], 
+              x = w.innerWidth || e.clientWidth || g.clientWidth, 
+              y = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
           "use strict";
           var margin = 75,
-              width = 800 - margin,
-              height = 600 - margin;
+              width = x - margin,
+              height = y - margin;
 
           var svg = d3.select("body")
             .append("svg")
@@ -38,6 +46,8 @@
           myChart.addLegend(200, 10, 380, 20, "left");
           myChart.draw();
         };
+
+        
       </script>
   </head>
 <body>
@@ -46,7 +56,7 @@
     Use D3 (not dimple.js) to load the TSV file
     and pass the contents of it to the draw function
     */
-  d3.csv("alldata.csv", draw);
+    d3.csv("alldata.csv", draw);
   </script>
 </body>
 </html>
